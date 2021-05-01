@@ -38,9 +38,12 @@ public class FirstWord {
         in.close();
         JSONArray result= new JSONArray(content.toString());
         Main.numberOfAPIcallsPlusOne();
-        System.out.println("getFirstWordMetaData run");
+        System.out.println("getFirstWordMetaData run" + result);
         if (!result.isEmpty()) {
-            return result.getJSONObject(0);
+            JSONObject wordObject = result.getJSONObject(0);
+            if (stringContainsOnlyLetters(wordObject.get("word").toString())) {
+                return result.getJSONObject(0);
+            }
         }
         else new FirstWord();
         return null;

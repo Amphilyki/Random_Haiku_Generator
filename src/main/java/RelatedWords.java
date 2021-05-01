@@ -39,6 +39,11 @@ public class RelatedWords {
         int r = (int) (Math.random() * (max - min)) + min;
         JSONObject randomWord = wordsFollowing.getJSONObject(r);
         System.out.println("Number of Word: " + r);
+        while (!stringContainsOnlyLetters(randomWord.get("word").toString())){
+            System.out.println("Word did not contain only letters");
+            r = (int) (Math.random() * (max - min)) + min;
+            randomWord = wordsFollowing.getJSONObject(r);
+        }
         return randomWord;
     }
 
@@ -46,4 +51,7 @@ public class RelatedWords {
         return word.getInt("numSyllables");
     }
 
+    public  boolean stringContainsOnlyLetters(String word){
+        return word.matches("[a-zA-Z]+");
+    }
 }
