@@ -17,6 +17,10 @@ public class FirstWord {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please input the word you want the haiku to start with:");
         startingWord= scanner.nextLine();
+        while (!stringContainsOnlyLetters(startingWord)){
+            System.out.println("Please input a valid word you want the haiku to start with:");
+            startingWord= scanner.nextLine();
+        }
     }
 
     public JSONObject getFirstWordMetaData() throws IOException {
@@ -35,6 +39,13 @@ public class FirstWord {
         JSONArray result= new JSONArray(content.toString());
         Main.numberOfAPIcallsPlusOne();
         System.out.println("getFirstWordMetaData run");
-        return result.getJSONObject(0);
+        if (!result.isEmpty()) {
+            return result.getJSONObject(0);
+        }
+        else new FirstWord();
+        return null;
+    }
+    public  boolean stringContainsOnlyLetters(String word){
+        return word.matches("[a-zA-Z]+");
     }
 }
