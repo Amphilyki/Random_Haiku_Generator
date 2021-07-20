@@ -11,7 +11,7 @@ public class RelatedWords {
     final String urlString="https://api.datamuse.com/words?rel_bga=";
 
 
-    public JSONArray getRelatedWords(String start) throws IOException{
+     JSONArray getRelatedWords(String start) throws IOException{
         URL url = new URL(urlString+start+"&md=s");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
@@ -30,7 +30,7 @@ public class RelatedWords {
         return result;
     }
 
-    public JSONObject pickRandomRelatedWord(JSONArray wordsFollowing) {
+     JSONObject pickRandomRelatedWord(JSONArray wordsFollowing) {
         if (wordsFollowing.length()==0) {
             System.out.println("Empty JSONArray");
         }
@@ -47,11 +47,11 @@ public class RelatedWords {
         return randomWord;
     }
 
-    public int checkNumberOfSyllables(JSONObject word){
+     int checkNumberOfSyllables(JSONObject word){
         return word.getInt("numSyllables");
     }
 
-    public  boolean stringContainsOnlyLetters(String word){
+      private boolean stringContainsOnlyLetters(String word){
         return word.matches("[a-zA-Z]+");
     }
 }

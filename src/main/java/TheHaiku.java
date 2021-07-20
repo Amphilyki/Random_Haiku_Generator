@@ -19,14 +19,14 @@ public class TheHaiku {
         lastWordChanged=changed;
     }
 
-    String [] notLastWords = {"which", "who", "whom", "whose", "although", "what", "where", "why",
+    private final String [] notLastWords = {"which", "who", "whom", "whose", "although", "what", "where", "why",
             "when", "how", "whereas", "because", "as", "furthermore", "additionally", "moreover",
             "but", "although", "while", "on", "in", "at", "since", "for", "before", "to", "till",
             "until", "by", "towards", "from", "unto", "across", "about", "of", "off", "into", "through",
             "above", "over", "below", "under", "past", "with", "the", "a", "an", "and", "so", "or", "I", "he",
-            "she", "we", "they", "your", "my", "his", "her", "its", "your", "our", "their"};
+            "she", "we", "they", "your", "my", "his", "her", "its", "your", "our", "their", "if"};
 
-    public String composeALine (int allowedNumber, JSONObject word, boolean firstLine) throws IOException {
+     String composeALine (int allowedNumber, JSONObject word, boolean firstLine) throws IOException {
         String line= "";
         int currentLineSyllables = 0;
 

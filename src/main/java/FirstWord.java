@@ -13,7 +13,7 @@ public class FirstWord {
     String startingWord = "";
 
     FirstWord () {
-        startingWord= "tyropita";
+        startingWord= "placeholder";
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please input the word you want the haiku to start with:");
         startingWord= scanner.nextLine();
@@ -23,7 +23,7 @@ public class FirstWord {
         }
     }
 
-    public JSONObject getFirstWordMetaData() throws IOException {
+     JSONObject getFirstWordMetaData() throws IOException {
         String start = startingWord;
         URL url = new URL(urlString+ start +"&md=s");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -48,7 +48,8 @@ public class FirstWord {
         else new FirstWord();
         return null;
     }
-    public  boolean stringContainsOnlyLetters(String word){
+
+    private  boolean stringContainsOnlyLetters(String word){
         return word.matches("[a-zA-Z]+");
     }
 }
