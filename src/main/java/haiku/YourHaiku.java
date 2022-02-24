@@ -1,13 +1,15 @@
 package haiku;
 
 import org.json.JSONObject;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/haiku")
-public class Main {
+public class YourHaiku {
 
     static int numberOfAPIcalls = 0;
 
@@ -15,8 +17,8 @@ public class Main {
         numberOfAPIcalls++;
     }
 
-    @GetMapping(produces = "application/json")
-    public String createHaiku(@RequestParam(defaultValue = "Blue") String firstWord) throws IOException {
+    @GetMapping(produces= MediaType.APPLICATION_JSON_VALUE)
+    public Map<String, String> createHaiku(@RequestParam(defaultValue = "Blue") String firstWord) throws IOException {
         FirstWord start = new FirstWord();
         JSONObject firstWordasJson = start.getFirstWordMetaData(firstWord);
         TheHaiku theHaiku = new TheHaiku();
@@ -27,7 +29,10 @@ public class Main {
         System.out.println(secondLine);
         System.out.println(thirdLine);
         System.out.println("number Of API calls :" + numberOfAPIcalls);
-        return firstLine + " / " + secondLine + " / " +  thirdLine;
+        Map haiku = new HashMap<String, String>();
+        String all =firstLine + " / " + secondLine + " / " + thirdLine;
+        haiku.put("yourhaiku", all);
+        return  haiku;
     }
 
 }

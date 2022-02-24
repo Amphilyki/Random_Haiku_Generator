@@ -28,7 +28,7 @@ public class RelatedWords {
 
         JSONArray result= new JSONArray(content.toString());
         System.out.println("getRelatedWords run");
-        Main.numberOfAPIcallsPlusOne();
+        YourHaiku.numberOfAPIcallsPlusOne();
         return result;
     }
 

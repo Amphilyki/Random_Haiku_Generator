@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Scanner;
 
 public class FirstWord {
 
@@ -29,7 +28,7 @@ public class FirstWord {
         }
         in.close();
         JSONArray result= new JSONArray(content.toString());
-        Main.numberOfAPIcallsPlusOne();
+        YourHaiku.numberOfAPIcallsPlusOne();
         System.out.println("getFirstWordMetaData run" + result);
         if (!result.isEmpty()) {
             JSONObject wordObject = result.getJSONObject(0);
