@@ -1,3 +1,5 @@
+package deprecated;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 

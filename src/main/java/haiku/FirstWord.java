@@ -1,3 +1,5 @@
+package haiku;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -10,21 +12,11 @@ import java.util.Scanner;
 public class FirstWord {
 
     final String urlString="https://api.datamuse.com/words?sl=";
-    String startingWord = "";
 
     FirstWord () {
-        startingWord= "placeholder";
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please input the word you want the haiku to start with:");
-        startingWord= scanner.nextLine();
-        while (!stringContainsOnlyLetters(startingWord)){
-            System.out.println("Please input a valid word you want the haiku to start with:");
-            startingWord= scanner.nextLine();
-        }
     }
 
-     JSONObject getFirstWordMetaData() throws IOException {
-        String start = startingWord;
+     JSONObject getFirstWordMetaData(String start) throws IOException {
         URL url = new URL(urlString+ start +"&md=s");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
